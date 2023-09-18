@@ -1,22 +1,32 @@
 import { Suspense } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Container from "../Container/Container";
+
+import css from "./Layout.module.scss";
 
 export default function Layout() {
 	return (
 		<>
-			<header>
-				header
-				<NavLink to="/">home</NavLink>
-				<NavLink to="/catalog">cat</NavLink>
-				<NavLink to="/favorites">fav</NavLink>
+			<header className={css.header}>
+				<Container>
+					<div className={css.wrapper}>
+						<Link className={css.logo} to="/">
+							CarShering
+						</Link>
+						<nav>
+							<NavLink to="/">Home</NavLink>
+							<NavLink to="/catalog">Catalog</NavLink>
+							<NavLink to="/favorites">Favorites</NavLink>
+						</nav>
+					</div>
+				</Container>
 			</header>
 			<main>
-				<Suspense fallback={<p>...Loading</p>}>
-					<Container>
+				<Container>
+					<Suspense fallback={<p>...Loading</p>}>
 						<Outlet />
-					</Container>
-				</Suspense>
+					</Suspense>
+				</Container>
 			</main>
 		</>
 	);

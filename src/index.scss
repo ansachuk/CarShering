@@ -1,6 +1,14 @@
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap");
+
+html {
+	box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
+	box-sizing: inherit;
 	margin: 0;
 	padding: 0;
 }
@@ -15,6 +23,23 @@ ol {
 	list-style: none;
 }
 
+button {
+	border: none;
+	cursor: pointer;
+}
+
+img,
+picture,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
 body {
-	background-color: cornsilk;
+	font-family: "Manrope", sans-serif;
+	line-height: 1.5;
+	color: #121417;
+
+	background-color: rgb(255, 253, 247);
 }
