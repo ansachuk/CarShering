@@ -20,9 +20,7 @@ const carsSlice = createSlice({
 			state.favorites.push(payload);
 		},
 		removeFromFavorite(state, { payload }) {
-			//payload === id
-
-			state.favorites.push(payload);
+			state.favorites = state.favorites.filter(item => item.id !== payload);
 		},
 	},
 	extraReducers: builder => {

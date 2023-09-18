@@ -1,15 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import { selectFavorites } from "../../toolkit/selectors/carsSelectors";
+import { addToFavorite, removeFromFavorite } from "../../toolkit/slices/carsSlice";
 
-import MainButton from "/src/components/MainButton/MainButton";
+import MainButton from "../MainButton/MainButton";
 
 import icons from "/assets/icons.svg";
 import css from "./CardItem.module.scss";
+import { useState } from "react";
+import Modal from "../Modal/Modal";
 
 export default function CardItem({ car }) {
+	const disp = useDispatch();
 	const allFavorites = useSelector(selectFavorites);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const { id, img, make, model, year, rentalPrice: price, address, rentalCompany, type, mileage, functionalities } = car;
 
@@ -19,9 +24,14 @@ export default function CardItem({ car }) {
 	const index = allFavorites.findIndex(car => car.id === id);
 	const icon = index !== -1 ? `${icons}#heart` : `${icons}#emptyHeart`;
 
+	const add = () => disp(addToFavorite(car));
+	const remove = () => disp(removeFromFavorite(id));
+
+	const onClick = index !== -1 ? remove : add;
+
 	return (
 		<li className={css.card}>
-			<svg className={css.icon} width="18" height="18">
+			<svg onClick={onClick} className={css.icon} width="18" height="18">
 				<use href={icon}></use>
 			</svg>
 			<img src={img} className={css.img} title={`${make} ${model}`} />
@@ -48,7 +58,8 @@ export default function CardItem({ car }) {
 					</div>
 				</div>
 			</div>
-			<MainButton title="Learn More" size="big" />
+			<MainButton onClick={setIsModalOpen} title="Learn More" size="big" />
+			{isModalOpen && <Modal car={car} closeModal={() => setIsModalOpen(false)} />}
 		</li>
 	);
 }
