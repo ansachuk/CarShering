@@ -19,6 +19,9 @@
 		transition-duration: $transitionDuration;
 		transition-timing-function: $transitionTimingFunction;
 
+		user-select: none;
+		cursor: pointer;
+
 		&::after {
 			content: "";
 

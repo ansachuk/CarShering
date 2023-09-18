@@ -1,3 +1,14 @@
+import { useDispatch } from "react-redux";
+import Filter from "/src/components/Filter/Filter";
+import { getAll } from "../../toolkit/operations/carsOperations";
+
 export default function CatalogPage() {
-	return <div>CatalogPage</div>;
+	const disp = useDispatch();
+	return (
+		<>
+			CatalogPage
+			<Filter />
+			<button onClick={() => disp(getAll())}>click</button>
+		</>
+	);
 }
