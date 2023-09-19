@@ -1,6 +1,9 @@
 import { Suspense } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+
 import Container from "../Container/Container";
+import Footer from "./Footer/Footer";
+import Loader from "../Loader/Loader";
 
 import css from "./Layout.module.scss";
 
@@ -23,11 +26,12 @@ export default function Layout() {
 			</header>
 			<main>
 				<Container>
-					<Suspense fallback={<p>...Loading</p>}>
+					<Suspense fallback={<Loader />}>
 						<Outlet />
 					</Suspense>
 				</Container>
 			</main>
+			<Footer />
 		</>
 	);
 }

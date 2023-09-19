@@ -1,5 +1,9 @@
 @import "/src/scss";
 
+main {
+	flex-grow: 1;
+}
+
 .header {
 	border-bottom: 1.5px solid $accentHoverColor;
 }

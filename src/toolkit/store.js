@@ -8,7 +8,8 @@ import carsReducer from "./slices/carsSlice";
 const persistConfig = {
 	key: "favorites",
 	storage,
-	whitelist: ["favorites", "allCars"],
+	whitelist: ["favorites"],
+	// whitelist: ["favorites", "allCars"],
 };
 
 const persistedReducer = persistReducer(persistConfig, carsReducer);

@@ -1,15 +1,15 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import { selectFavorites } from "../../toolkit/selectors/carsSelectors";
 import { addToFavorite, removeFromFavorite } from "../../toolkit/slices/carsSlice";
 
+import Modal from "../Modal/Modal";
 import MainButton from "../MainButton/MainButton";
 
 import icons from "/assets/icons.svg";
 import css from "./CardItem.module.scss";
-import { useState } from "react";
-import Modal from "../Modal/Modal";
 
 export default function CardItem({ car }) {
 	const disp = useDispatch();
@@ -34,6 +34,7 @@ export default function CardItem({ car }) {
 			<svg onClick={onClick} className={css.icon} width="18" height="18">
 				<use href={icon}></use>
 			</svg>
+
 			<img src={img} className={css.img} title={`${make} ${model}`} />
 
 			<div className={css.wrapper}>

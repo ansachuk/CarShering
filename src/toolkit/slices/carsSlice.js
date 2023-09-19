@@ -3,6 +3,7 @@ import { getAll } from "../operations/carsOperations";
 
 const initialState = {
 	allCars: [],
+	carsToShow: [],
 	favorites: [],
 	page: 1,
 	isLoading: false,
@@ -15,6 +16,7 @@ const carsSlice = createSlice({
 	reducers: {
 		increasePage(state) {
 			state.page += 1;
+			state.carsToShow = [...state.allCars.slice(0, state.page * 8 + 8)];
 		},
 		addToFavorite(state, { payload }) {
 			state.favorites.push(payload);
@@ -34,6 +36,7 @@ const carsSlice = createSlice({
 				state.error = null;
 
 				state.allCars = payload;
+				state.carsToShow = state.allCars.slice(0, 8);
 			})
 			.addCase(getAll.rejected, (state, { payload }) => {
 				state.isLoading = false;
