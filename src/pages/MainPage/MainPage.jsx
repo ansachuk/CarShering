@@ -10,8 +10,8 @@ export default function MainPage() {
 			<div>
 				<h1 className={css.title}>Easy to rent your car!</h1>
 				<p className={css.desc}>
-					We have a wide selection of cars to choose from, including economy cars, SUVs, and luxury cars. We also offer a variety of rental options to
-					fit your needs, including short-term rentals, long-term rentals, and one-way rentals.
+					We have a wide selection of cars to choose from, including economy cars, SUVs, and luxury cars in Ukraine 🇺🇦. We also offer a variety of
+					rental options to fit your needs, including short-term rentals, long-term rentals, and one-way rentals.
 				</p>
 				<Link to="/catalog" className={css.link}>
 					Go to catalog
