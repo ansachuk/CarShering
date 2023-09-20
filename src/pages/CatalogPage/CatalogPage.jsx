@@ -6,7 +6,7 @@ import { increasePage } from "../../toolkit/slices/carsSlice";
 
 import { selectCarsToShow, selectAllCars } from "../../toolkit/selectors/carsSelectors.js";
 
-// import Filter from "../../components/Filter/Filter";
+import Filter from "../../components/Filter/Filter";
 import CardList from "../../components/CardList/CardList";
 
 import css from "./CatalogPage.module.scss";
@@ -24,7 +24,7 @@ export default function CatalogPage() {
 
 	return (
 		<div className={css.wrapper}>
-			{/* <Filter /> */}
+			<Filter />
 			<CardList list={carsToShow} />
 
 			{allCars.length > carsToShow.length && (

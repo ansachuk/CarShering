@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAll } from "../operations/carsOperations";
+import { createDataArray } from "../../utils/utils";
 
 const initialState = {
 	allCars: [],
 	carsToShow: [],
 	favorites: [],
+	brands: [],
 	page: 1,
 	isLoading: false,
 	error: null,
@@ -36,6 +38,7 @@ const carsSlice = createSlice({
 				state.error = null;
 
 				state.allCars = payload;
+				state.brands = createDataArray(state.allCars);
 				state.carsToShow = state.allCars.slice(0, 8);
 			})
 			.addCase(getAll.rejected, (state, { payload }) => {
